@@ -25,6 +25,7 @@
             line-height: 1.6;
         }
 
+        /* Navegación */
         nav {
             background: rgba(15, 15, 15, 0.95);
             padding: 15px;
@@ -43,12 +44,13 @@
             margin: 0 15px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
         nav a:hover { color: var(--primary); }
 
+        /* Header con imagen nueva */
         header {
             height: 80vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(15,15,15,1)), url('https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png');
@@ -87,7 +89,7 @@
 
         .section { padding: 80px 20px; max-width: 1100px; margin: auto; }
 
-        /* Estilo de la Filosofía de Rol */
+        /* Filosofía de Juego */
         .info-card {
             background: linear-gradient(145deg, #1a1a1a, #222);
             padding: 40px;
@@ -100,44 +102,62 @@
 
         .info-card i { color: var(--primary); font-size: 3rem; margin-bottom: 20px; }
 
-        /* Reglas Detalladas */
+        /* Reglas Acordeón */
         .rule-item {
             background: var(--card);
             margin-bottom: 15px;
             border-radius: 8px;
             border-left: 5px solid var(--primary);
             overflow: hidden;
-            transition: 0.3s;
         }
 
         summary {
             padding: 20px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             list-style: none;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
         summary::after { content: '▼'; font-size: 0.8rem; color: var(--primary); }
 
-        .rule-content {
-            padding: 20px 30px 30px;
-            border-top: 1px solid #333;
-            background: #1d1d1d;
+        .rule-content { padding: 25px; border-top: 1px solid #333; background: #1d1d1d; }
+        .rule-content ul { padding-left: 20px; }
+        .rule-content li { margin-bottom: 10px; }
+
+        /* Sección de Staff */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .rule-content ul { padding-left: 20px; }
-        .rule-content li { margin-bottom: 12px; }
-        .rule-content b { color: var(--primary); }
+        .staff-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+            transition: 0.3s;
+        }
 
+        .staff-card i { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .staff-name { font-size: 1.2rem; font-weight: bold; display: block; margin-bottom: 5px; }
+
+        .role-tag { font-size: 0.75rem; font-weight: bold; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+        .owner { background: rgba(240, 71, 71, 0.2); color: #f04747; }
+        .admin { background: rgba(77, 166, 255, 0.2); color: #4da6ff; }
+        .prueba { background: rgba(255, 204, 0, 0.2); color: #ffcc00; }
+        .sponsor { background: rgba(51, 204, 51, 0.2); color: #33cc33; }
+
+        /* Galería */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-top: 30px;
         }
 
         .gallery-grid img {
@@ -146,10 +166,7 @@
             object-fit: cover;
             border-radius: 10px;
             border: 2px solid #333;
-            transition: 0.3s;
         }
-
-        .gallery-grid img:hover { border-color: var(--primary); transform: scale(1.02); }
 
         footer { padding: 60px; text-align: center; background: #050505; border-top: 1px solid #222; }
     </style>
@@ -160,68 +177,99 @@
         <a href="#">Inicio</a>
         <a href="#rol">Nuestro Rol</a>
         <a href="#reglas">Reglas</a>
+        <a href="#equipo">Equipo</a>
         <a href="#galeria">Galería</a>
     </nav>
 
     <header>
-        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Logo Gran Avenida" class="logo-img">
+        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Logo" class="logo-img">
         <h1>GRAN AVENIDA RP</h1>
-        <p style="font-size: 1.2rem;">Donde la diversión y la buena compañía son lo primero.</p>
+        <p>¡Donde la diversión no tiene límites!</p>
         <div>
-            <a href="fivem://connect/TU_IP_AQUI" class="btn btn-primary"><i class="fas fa-play"></i> Jugar Ahora</a>
-            <a href="https://discord.gg/TzdMm7WsRh" target="_blank" class="btn btn-discord"><i class="fab fa-discord"></i> Comunidad</a>
+            <a href="fivem://connect/TU_IP_AQUI" class="btn btn-primary">ENTRAR A LA CIUDAD</a>
+            <a href="https://discord.gg/TzdMm7WsRh" target="_blank" class="btn btn-discord">DISCORD OFICIAL</a>
         </div>
     </header>
 
     <div id="rol" class="section">
         <div class="info-card">
-            <i class="fas fa-gamepad"></i>
-            <h2>Filosofía de Juego</h2>
-            <p>En <b>Gran Avenida RP</b> no buscamos una simulación de vida aburrida o extremadamente estricta. Nuestro objetivo es que entres a **divertirte**, hacer amigos y pasar un buen rato sin miedos.</p>
-            <p style="color: var(--primary); font-weight: bold; font-size: 1.2rem; margin-top: 15px;">¡DIVERSIÓN SÍ, CAOS NO!</p>
-            <p>Aceptamos un rol más relajado y gracioso, pero tenemos tolerancia cero con el **anti-rol grave**. Si vienes solo a molestar, insultar OOC o romper la experiencia de los demás con acciones imposibles, serás sancionado.</p>
+            <i class="fas fa-smile-wink"></i>
+            <h2>¿Cómo es nuestro Rol?</h2>
+            <p>En <b>Gran Avenida RP</b> buscamos que te diviertas. No somos un servidor de rol ultra-estricto donde todo es aburrido. Aquí premiamos la creatividad y las risas.</p>
+            <p style="color: var(--primary); font-weight: bold; margin-top: 10px;">¡IMPORTANTE!</p>
+            <p>Divertirse no es excusa para el caos. El <b>Anti-rol grave</b> y las faltas de respeto constantes serán sancionados. ¡Queremos una comunidad sana!</p>
         </div>
     </div>
 
     <div id="reglas" class="section">
-        <h2 style="text-align:center; font-size: 2.5rem; margin-bottom: 40px;">Reglamento Interno</h2>
-        
-        <details class="rule-item">
-            <summary>1. Normas de Convivencia (OOC)</summary>
-            <div class="rule-content">
-                <ul>
-                    <li><b>Respeto absoluto:</b> Cualquier insulto, acoso o discriminación fuera de personaje (OOC) es motivo de ban.</li>
-                    <li><b>MetaGaming:</b> Prohibido usar información obtenida fuera del juego (Discord/Streams) para beneficio propio.</li>
-                    <li><b>Hacks/Cheats:</b> El uso de programas externos para sacar ventaja resultará en <b>Ban Permanente</b> inmediato.</li>
-                </ul>
-            </div>
-        </details>
+        <h2 style="text-align:center; text-transform: uppercase;">Reglamento General</h2>
+        <div class="rules-container">
+            <details class="rule-item">
+                <summary>Normas Básicas de Convivencia</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Respeto:</b> Sin insultos ni toxicidad fuera de personaje (OOC).</li>
+                        <li><b>Hacks/Cheats:</b> Uso de ventajas externas = Ban Permanente.</li>
+                        <li><b>MetaGaming:</b> No uses info de Discord o Streams dentro del juego.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="rule-item">
+                <summary>Reglas de Juego (IC)</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Valorar la Vida:</b> Tu personaje debe tener miedo si lo amenazan con armas.</li>
+                        <li><b>RDM/VDM:</b> No mates sin motivo ni uses coches para atropellar.</li>
+                        <li><b>Zonas Seguras:</b> Hospitales, Comisarías y Garajes son sagrados.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </div>
 
-        <details class="rule-item">
-            <summary>2. Conceptos Básicos de Rol</summary>
-            <div class="rule-content">
-                <ul>
-                    <li><b>Valorar la Vida (Fear RP):</b> Tu personaje debe actuar con miedo lógico ante una situación de riesgo (ej: una pistola en la cabeza).</li>
-                    <li><b>PowerGaming (PG):</b> Prohibido hacer cosas imposibles en la vida real o forzar el rol de otros jugadores sin darles opción.</li>
-                    <li><b>Zonas Seguras:</b> No se permiten actos delictivos en Hospitales, Comisarías ni Garajes principales.</li>
-                </ul>
+    <div id="equipo" class="section">
+        <h2 style="text-align:center; text-transform: uppercase; margin-bottom: 40px;">Nuestro Equipo de Staff</h2>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <i class="fas fa-crown" style="color: #f04747;"></i>
+                <span class="staff-name">migupro10</span>
+                <span class="role-tag owner">Owner</span>
             </div>
-        </details>
-
-        <details class="rule-item">
-            <summary>3. Combate y Vehículos</summary>
-            <div class="rule-content">
-                <ul>
-                    <li><b>RDM (Random Deathmatch):</b> No puedes matar a nadie sin una razón de rol de peso y una interacción previa.</li>
-                    <li><b>VDM (Vehicle Deathmatch):</b> Prohibido usar vehículos como armas para atropellar personas intencionalmente.</li>
-                    <li><b>Conducción:</b> Aunque el rol no sea serio, conduce con coherencia. No uses coches deportivos como si fueran todoterrenos por la montaña.</li>
-                </ul>
+            <div class="staff-card">
+                <i class="fas fa-shield-alt" style="color: #4da6ff;"></i>
+                <span class="staff-name">KingMaxx</span>
+                <span class="role-tag admin">Administrador</span>
             </div>
-        </details>
+            <div class="staff-card">
+                <i class="fas fa-shield-alt" style="color: #4da6ff;"></i>
+                <span class="staff-name">Matias_20</span>
+                <span class="role-tag admin">Administrador</span>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-shield-alt" style="color: #4da6ff;"></i>
+                <span class="staff-name">franco</span>
+                <span class="role-tag admin">Administrador</span>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-shield-alt" style="color: #4da6ff;"></i>
+                <span class="staff-name">𝙉𝙚𝙞𝙩𝙤𝙧860</span>
+                <span class="role-tag admin">Administrador</span>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-user-clock" style="color: #ffcc00;"></i>
+                <span class="staff-name">Gaspi Montana</span>
+                <span class="role-tag prueba">Staff en pruebas</span>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-star" style="color: #33cc33;"></i>
+                <span class="staff-name">natanael1050xx_87555</span>
+                <span class="role-tag sponsor">Patrocinador</span>
+            </div>
+        </div>
     </div>
 
     <div id="galeria" class="section">
-        <h2 style="text-align:center; font-size: 2.5rem;">Galería de la Ciudad</h2>
+        <h2 style="text-align:center; text-transform: uppercase;">Galería de Imágenes</h2>
         <div class="gallery-grid">
             <img src="https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png" alt="Captura 1">
             <img src="https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png" alt="Captura 2">
@@ -229,9 +277,8 @@
     </div>
 
     <footer>
-        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" style="width: 80px; opacity: 0.5; margin-bottom: 20px;" alt="Logo Footer">
-        <p>&copy; 2026 <b>Gran Avenida RP</b>. Servidor creado para la comunidad.</p>
-        <p style="font-size: 0.8rem; color: #555;">Respeta las normas y disfruta de la estancia.</p>
+        <p>&copy; 2026 <b>Gran Avenida RP</b>. Todo el contenido es para fines de entretenimiento.</p>
+        <p style="font-size: 0.8rem; opacity: 0.5;">Creado con pasión por el equipo de Staff.</p>
     </footer>
 
 </body>
