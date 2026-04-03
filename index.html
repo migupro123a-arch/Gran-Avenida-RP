@@ -10,20 +10,27 @@
             --primary: #f04747; 
             --bg: #0f0f0f;
             --card: #1a1a1a;
+            --card-hover: #252525;
             --text: #ffffff;
             --discord: #5865F2;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
+        /* Navegación */
         nav {
-            background: rgba(26, 26, 26, 0.95);
+            background: rgba(15, 15, 15, 0.95);
             padding: 15px;
             position: fixed;
             width: 100%;
@@ -31,6 +38,7 @@
             z-index: 1000;
             text-align: center;
             border-bottom: 2px solid var(--primary);
+            backdrop-filter: blur(5px);
         }
 
         nav a {
@@ -40,10 +48,16 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.9rem;
+            transition: 0.3s;
         }
 
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Encabezado */
         header {
-            height: 60vh;
+            height: 70vh;
             background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), url('https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png');
             background-size: cover;
             background-position: center;
@@ -52,18 +66,26 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 50px;
+            padding: 20px;
         }
 
         .logo-img {
-            width: 180px;
+            width: 220px;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 15px var(--primary));
         }
 
-        .btn-discord {
-            background-color: var(--discord);
-            color: white;
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .btn-container {
+            margin-top: 30px;
+        }
+
+        .btn {
             padding: 15px 30px;
             border-radius: 5px;
             text-decoration: none;
@@ -71,60 +93,137 @@
             transition: 0.3s;
             display: inline-block;
             margin: 10px;
-        }
-
-        .section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        h2 {
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
             text-transform: uppercase;
         }
 
-        /* Reglas */
-        .rules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-discord {
+            background-color: var(--discord);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            filter: brightness(1.1);
+        }
+
+        /* Secciones */
+        .section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Reglas Desplegables */
+        .rules-container {
             margin-top: 30px;
         }
 
-        .rule-card {
+        .rule-item {
             background: var(--card);
-            padding: 20px;
+            margin-bottom: 15px;
             border-radius: 8px;
-            border-top: 3px solid var(--primary);
+            overflow: hidden;
+            border-left: 5px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .rule-item summary {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rule-item summary::after {
+            content: '▼';
+            font-size: 0.9rem;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .rule-item[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .rule-content {
+            padding: 0 25px 25px 25px;
+            background: #151515;
+            border-top: 1px solid #333;
+        }
+
+        .rule-content ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .rule-content li {
+            margin-bottom: 10px;
+        }
+
+        .rule-content b {
+            color: var(--primary);
         }
 
         /* Galería */
-        .gallery {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
-        .gallery img {
+        .gallery-grid img {
             width: 100%;
-            border-radius: 8px;
-            transition: 0.3s;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: 0.4s;
             cursor: pointer;
+            border: 2px solid transparent;
         }
 
-        .gallery img:hover {
-            transform: scale(1.02);
+        .gallery-grid img:hover {
+            border-color: var(--primary);
+            transform: scale(1.03);
             filter: brightness(1.2);
         }
 
+        /* Footer */
         footer {
-            padding: 40px;
+            padding: 60px 20px;
             text-align: center;
             background: #050505;
+            border-top: 1px solid #222;
         }
+
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
     </style>
 </head>
 <body>
@@ -137,46 +236,86 @@
     </nav>
 
     <header>
-        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Logo" class="logo-img">
+        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Logo Gran Avenida RP" class="logo-img">
         <h1>GRAN AVENIDA RP</h1>
-        <p>Crea tu historia, crea tu personaje y forma una linda aventura.</p>
-        <div>
-            <a href="fivem://connect/TU_IP_AQUI" class="btn-discord" style="background: var(--primary);">ENTRAR A LA CIUDAD</a>
-            <a href="https://discord.gg/TzdMm7WsRh" target="_blank" class="btn-discord"><i class="fa-brands fa-discord"></i> UNIRSE AL DISCORD</a>
+        <p style="font-size: 1.2rem; max-width: 600px;">Crea tu historia, crea tu personaje y forma una linda aventura en la ciudad más completa.</p>
+        <div class="btn-container">
+            <a href="fivem://connect/TU_IP_AQUI" class="btn btn-primary"><i class="fa-solid fa-play"></i> Entrar a la Ciudad</a>
+            <a href="https://discord.gg/TzdMm7WsRh" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Nuestro Discord</a>
         </div>
     </header>
 
     <div id="reglas" class="section">
-        <h2>Reglamento Interno</h2>
-        <div class="rules-grid">
-            <div class="rule-card">
-                <h3><i class="fa-solid fa-handshake"></i> Reglas Generales</h3>
-                <ul>
-                    <li>Respeto mutuo entre todos los jugadores.</li>
-                    <li>Prohibido el uso de hacks o cheats (Ban permanente).</li>
-                    <li>El desconocimiento de las reglas no exime de sanción.</li>
-                </ul>
-            </div>
-            <div class="rule-card">
-                <h3><i class="fa-solid fa-car"></i> Conceptos de Rol</h3>
-                <ul>
-                    <li><b>VMD:</b> Prohibido matar con el vehículo sin razón.</li>
-                    <li><b>RDM:</b> No matar a otros sin un motivo de rol previo.</li>
-                    <li><b>MetaGaming:</b> No uses info de fuera del juego dentro de tu personaje.</li>
-                </ul>
-            </div>
+        <div class="section-title">
+            <h2>Normativa de la Ciudad</h2>
+            <p>El desconocimiento de las normas NO es excusa. ¡Lee con atención!</p>
+        </div>
+
+        <div class="rules-container">
+            <details class="rule-item">
+                <summary>1. Normas Generales</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Respeto:</b> A todos los usuarios. Sin insultos, racismo o toxicidad OOC.</li>
+                        <li><b>Rol Serio:</b> Mantén siempre la compostura. No Troll ni Fail RP.</li>
+                        <li><b>MetaGaming (MG):</b> Prohibido usar info de fuera del juego (Discord/Streams).</li>
+                        <li><b>PowerGaming (PG):</b> No realices acciones imposibles o forzadas.</li>
+                        <li><b>DeathMatch (DM):</b> No matar sin una razón de peso y rol previo.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="rule-item">
+                <summary>2. Conceptos Importantes</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Valorar la Vida:</b> Tu personaje debe actuar con miedo real ante el peligro (Fear RP).</li>
+                        <li><b>Uso de Armas:</b> Solo bajo motivo sólido de rol. No disparar sin sentido.</li>
+                        <li><b>Zonas Seguras:</b> Prohibido el crimen en Hospital, Comisaría, Mecánicos, Garajes y Bancos Fleeca.</li>
+                        <li><b>Conducción:</b> Maneja de forma realista. No uses el coche como un tanque o avión.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="rule-item">
+                <summary>3. Rol Criminal y Policial</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Robos y Delitos:</b> Deben tener interacción y planeación. No farmear robos.</li>
+                        <li><b>Interacción con Víctimas:</b> Da oportunidad de diálogo, no actúes por actuar.</li>
+                        <li><b>Policía y EMS:</b> Respeta sus roles. Acepta las consecuencias de tus actos legales.</li>
+                        <li><b>Combat Logging:</b> Prohibido desconectarse para evitar una situación de rol o arresto.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="rule-item">
+                <summary>4. Staff y Sanciones</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Hacks / Cheats:</b> Uso de cualquier ventaja externa resultará en <b>BAN PERMANENTE</b>.</li>
+                        <li><b>Reportes:</b> Usa los canales de Discord con pruebas (videos/fotos). No inventes situaciones.</li>
+                        <li><b>Decisiones:</b> La palabra del Staff es final. No discutas sanciones en chats públicos.</li>
+                    </ul>
+                </div>
+            </details>
         </div>
     </div>
 
     <div id="galeria" class="section">
-        <h2>Galería de la Ciudad</h2>
-        <div class="gallery">
-            <img src="https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png" alt="Captura 1">
+        <div class="section-title">
+            <h2>Galería de Imágenes</h2>
+            <p>Un vistazo a lo que se vive día a día en Gran Avenida RP.</p>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png" alt="Captura de pantalla Gran Avenida">
             </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Gran Avenida RP - Desarrollado para la comunidad.</p>
+        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Mini Logo" class="footer-logo"><br>
+        <p>&copy; 2026 <b>Gran Avenida RP</b>. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8rem; color: #555;">Desarrollado para ofrecer la mejor experiencia de Rol Serio.</p>
     </footer>
 
 </body>
