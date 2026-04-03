@@ -22,6 +22,7 @@
             color: var(--text);
             margin: 0;
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         nav {
@@ -33,6 +34,7 @@
             z-index: 1000;
             text-align: center;
             border-bottom: 2px solid var(--primary);
+            backdrop-filter: blur(5px);
         }
 
         nav a {
@@ -41,12 +43,15 @@
             margin: 0 15px;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
 
+        nav a:hover { color: var(--primary); }
+
         header {
-            height: 70vh;
-            /* SE CAMBIÓ LA IMAGEN DE FONDO AQUÍ */
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), url('https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png');
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(15,15,15,1)), url('https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -58,10 +63,12 @@
         }
 
         .logo-img {
-            width: 200px;
+            width: 220px;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 15px var(--primary));
         }
+
+        h1 { font-size: 3.5rem; margin: 0; letter-spacing: 2px; }
 
         .btn {
             padding: 15px 30px;
@@ -71,165 +78,160 @@
             display: inline-block;
             margin: 10px;
             transition: 0.3s;
+            text-transform: uppercase;
         }
 
         .btn-primary { background: var(--primary); color: white; }
         .btn-discord { background: var(--discord); color: white; }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
-        .section { padding: 80px 20px; max-width: 1000px; margin: auto; }
+        .section { padding: 80px 20px; max-width: 1100px; margin: auto; }
 
-        /* Estilo de Reglas Desplegables ACTUALIZADO */
-        .rules-container { margin-top: 30px; }
-        
+        /* Estilo de la Filosofía de Rol */
+        .info-card {
+            background: linear-gradient(145deg, #1a1a1a, #222);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #333;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .info-card i { color: var(--primary); font-size: 3rem; margin-bottom: 20px; }
+
+        /* Reglas Detalladas */
         .rule-item {
             background: var(--card);
             margin-bottom: 15px;
             border-radius: 8px;
             border-left: 5px solid var(--primary);
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: 0.3s;
         }
-
-        .rule-item[open] { border-left-color: white; }
 
         summary {
             padding: 20px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            text-transform: uppercase;
         }
 
-        summary::after {
-            content: '▼';
-            font-size: 0.8rem;
-            color: var(--primary);
-            transition: 0.3s;
-        }
-
-        .rule-item[open] summary::after { transform: rotate(180deg); color: white; }
+        summary::after { content: '▼'; font-size: 0.8rem; color: var(--primary); }
 
         .rule-content {
-            padding: 0 25px 25px;
+            padding: 20px 30px 30px;
             border-top: 1px solid #333;
-            background: #222;
+            background: #1d1d1d;
         }
 
-        .rule-content p { margin-top: 15px; margin-bottom: 5px; color: #aaa; font-style: italic;}
-        .rule-content ul { padding-left: 20px; margin-top: 15px; }
-        .rule-content li { margin-bottom: 12px; line-height: 1.6; }
-        .rule-content b { color: white; }
+        .rule-content ul { padding-left: 20px; }
+        .rule-content li { margin-bottom: 12px; }
+        .rule-content b { color: var(--primary); }
 
-        .gallery img {
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-grid img {
             width: 100%;
+            height: 250px;
+            object-fit: cover;
             border-radius: 10px;
-            margin-top: 20px;
-            border: 2px solid var(--primary);
+            border: 2px solid #333;
             transition: 0.3s;
         }
-        .gallery img:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        footer { padding: 40px; text-align: center; background: #050505; border-top: 1px solid #222; }
+        .gallery-grid img:hover { border-color: var(--primary); transform: scale(1.02); }
+
+        footer { padding: 60px; text-align: center; background: #050505; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
     <nav>
         <a href="#">Inicio</a>
+        <a href="#rol">Nuestro Rol</a>
         <a href="#reglas">Reglas</a>
         <a href="#galeria">Galería</a>
-        <a href="https://discord.gg/TzdMm7WsRh" target="_blank">Discord</a>
     </nav>
 
     <header>
-        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Logo" class="logo-img">
+        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" alt="Logo Gran Avenida" class="logo-img">
         <h1>GRAN AVENIDA RP</h1>
-        <p>Crea tu historia, crea tu personaje y forma una linda aventura.</p>
+        <p style="font-size: 1.2rem;">Donde la diversión y la buena compañía son lo primero.</p>
         <div>
-            <a href="fivem://connect/TU_IP_AQUI" class="btn btn-primary">ENTRAR A LA CIUDAD</a>
-            <a href="https://discord.gg/TzdMm7WsRh" target="_blank" class="btn btn-discord">UNIRSE AL DISCORD</a>
+            <a href="fivem://connect/TU_IP_AQUI" class="btn btn-primary"><i class="fas fa-play"></i> Jugar Ahora</a>
+            <a href="https://discord.gg/TzdMm7WsRh" target="_blank" class="btn btn-discord"><i class="fab fa-discord"></i> Comunidad</a>
         </div>
     </header>
 
-    <div id="reglas" class="section">
-        <h2 style="text-align:center; text-transform:uppercase;">Reglamento Oficial de la Ciudad</h2>
-        <p style="text-align:center; margin-bottom: 40px; color: #ccc;">El desconocimiento de las normas NO es excusa.</p>
-        
-        <div class="rules-container">
-            <details class="rule-item">
-                <summary>1. Normas Generales y Convivencia</summary>
-                <div class="rule-content">
-                    <ul>
-                        <li><b>Respeto:</b> Sin excepción. No insultos, discriminación, racismo o toxicidad. No peleas OOC.</li>
-                        <li><b>Rol Serio:</b> Mantén la compostura. No troll ni fail RP. Prohibido mezclar vida real con rol (MetaGaming).</li>
-                        <li><b>PowerGaming (PG):</b> No realices acciones irreales (ej: correr con 10 balazos). No forzar rol a otros.</li>
-                        <li><b>Uso de chat:</b> Usa correctamente los canales (IC/OOC). No spam ni flood. No publicidad.</li>
-                        <li><b>Hacks/Cheats:</b> Ban permanente inmediato.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="rule-item">
-                <summary>2. Conceptos de Combate y Uso de Violencia</summary>
-                <div class="rule-content">
-                    <ul>
-                        <li><b>DeathMatch (DM):</b> No matar sin razón válida de rol. Siempre debe haber historia o motivo.</li>
-                        <li><b>Fear RP:</b> Valora la vida de tu personaje ante el peligro real.</li>
-                        <li><b>Zonas Seguras:</b> Prohibido crimen en Hospital, Comisaría, Mecánicos, Garaje central, Cafe uwu, Bancos Fleeca.</li>
-                        <li><b>Uso de armas:</b> Solo con motivo de rol. No abusar en zonas seguras ni disparar sin razón.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="rule-item">
-                <summary>3. Conducción y Vehículos</summary>
-                <div class="rule-content">
-                    <ul>
-                        <li><b>Conducción Realista:</b> Maneja de forma realista. No conducir como loco sin motivo ni usar vehículos como armas sin rol previo.</li>
-                        <li><b>Choques:</b> Rolea las consecuencias de un accidente.</li>
-                        <li><b>Combat Logging:</b> Prohibido desconectarse para evitar arrestos o interacciones.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="rule-item">
-                <summary>4. Rol Criminal y Policial</summary>
-                <div class="rule-content">
-                    <p><i>Importante: El objetivo NO es ganar, sino crear historias.</i></p>
-                    <ul>
-                        <li><b>Coherencia:</b> Tu personaje debe tener motivos reales para delinquir, no pasar de civil a criminal extremo sin desarrollo.</li>
-                        <li><b>Robos y delitos:</b> Deben tener rol previo (planeación). Respeta límites del servidor.</li>
-                        <li><b>Interacción con víctimas/policía:</b> Da oportunidad de rol (diálogo). No humillar innecesariamente. Acepta consecuencias si te atrapan.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="rule-item">
-                <summary>5. Staff y Sanciones</summary>
-                <div class="rule-content">
-                    <ul>
-                        <li><b>Reportes:</b> Si tienes problemas, reporta con pruebas claras.</li>
-                        <li><b>Sanciones:</b> Incumplir normas puede llevar a Warn / Jail Administrativo / Ban (Temporal/Permanente). Las decisiones del Staff son finales.</li>
-                    </ul>
-                </div>
-            </details>
+    <div id="rol" class="section">
+        <div class="info-card">
+            <i class="fas fa-gamepad"></i>
+            <h2>Filosofía de Juego</h2>
+            <p>En <b>Gran Avenida RP</b> no buscamos una simulación de vida aburrida o extremadamente estricta. Nuestro objetivo es que entres a **divertirte**, hacer amigos y pasar un buen rato sin miedos.</p>
+            <p style="color: var(--primary); font-weight: bold; font-size: 1.2rem; margin-top: 15px;">¡DIVERSIÓN SÍ, CAOS NO!</p>
+            <p>Aceptamos un rol más relajado y gracioso, pero tenemos tolerancia cero con el **anti-rol grave**. Si vienes solo a molestar, insultar OOC o romper la experiencia de los demás con acciones imposibles, serás sancionado.</p>
         </div>
     </div>
 
+    <div id="reglas" class="section">
+        <h2 style="text-align:center; font-size: 2.5rem; margin-bottom: 40px;">Reglamento Interno</h2>
+        
+        <details class="rule-item">
+            <summary>1. Normas de Convivencia (OOC)</summary>
+            <div class="rule-content">
+                <ul>
+                    <li><b>Respeto absoluto:</b> Cualquier insulto, acoso o discriminación fuera de personaje (OOC) es motivo de ban.</li>
+                    <li><b>MetaGaming:</b> Prohibido usar información obtenida fuera del juego (Discord/Streams) para beneficio propio.</li>
+                    <li><b>Hacks/Cheats:</b> El uso de programas externos para sacar ventaja resultará en <b>Ban Permanente</b> inmediato.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="rule-item">
+            <summary>2. Conceptos Básicos de Rol</summary>
+            <div class="rule-content">
+                <ul>
+                    <li><b>Valorar la Vida (Fear RP):</b> Tu personaje debe actuar con miedo lógico ante una situación de riesgo (ej: una pistola en la cabeza).</li>
+                    <li><b>PowerGaming (PG):</b> Prohibido hacer cosas imposibles en la vida real o forzar el rol de otros jugadores sin darles opción.</li>
+                    <li><b>Zonas Seguras:</b> No se permiten actos delictivos en Hospitales, Comisarías ni Garajes principales.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="rule-item">
+            <summary>3. Combate y Vehículos</summary>
+            <div class="rule-content">
+                <ul>
+                    <li><b>RDM (Random Deathmatch):</b> No puedes matar a nadie sin una razón de rol de peso y una interacción previa.</li>
+                    <li><b>VDM (Vehicle Deathmatch):</b> Prohibido usar vehículos como armas para atropellar personas intencionalmente.</li>
+                    <li><b>Conducción:</b> Aunque el rol no sea serio, conduce con coherencia. No uses coches deportivos como si fueran todoterrenos por la montaña.</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+
     <div id="galeria" class="section">
-        <h2 style="text-align:center; text-transform:uppercase;">Galería</h2>
-        <div class="gallery">
-            <img src="https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png" alt="Nueva Captura Gran Avenida">
+        <h2 style="text-align:center; font-size: 2.5rem;">Galería de la Ciudad</h2>
+        <div class="gallery-grid">
+            <img src="https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png" alt="Captura 1">
+            <img src="https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png" alt="Captura 2">
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 <b>Gran Avenida RP</b> | Todos los derechos reservados.</p>
+        <img src="https://i.ibb.co/dsqF3rnR/Avenida-Gran-RP-con-ciudad-y-lujo.png" style="width: 80px; opacity: 0.5; margin-bottom: 20px;" alt="Logo Footer">
+        <p>&copy; 2026 <b>Gran Avenida RP</b>. Servidor creado para la comunidad.</p>
+        <p style="font-size: 0.8rem; color: #555;">Respeta las normas y disfruta de la estancia.</p>
     </footer>
 
 </body>
