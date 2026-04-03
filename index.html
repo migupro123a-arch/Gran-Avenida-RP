@@ -45,7 +45,8 @@
 
         header {
             height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), url('https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png');
+            /* SE CAMBIÓ LA IMAGEN DE FONDO AQUÍ */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), url('https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -77,33 +78,63 @@
 
         .section { padding: 80px 20px; max-width: 1000px; margin: auto; }
 
-        /* Estilo de Reglas Desplegables */
+        /* Estilo de Reglas Desplegables ACTUALIZADO */
+        .rules-container { margin-top: 30px; }
+        
         .rule-item {
             background: var(--card);
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border-left: 4px solid var(--primary);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
+
+        .rule-item[open] { border-left-color: white; }
 
         summary {
             padding: 20px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1.1rem;
             list-style: none;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
         }
 
-        .rule-content { padding: 0 20px 20px; border-top: 1px solid #333; }
+        summary::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .rule-item[open] summary::after { transform: rotate(180deg); color: white; }
+
+        .rule-content {
+            padding: 0 25px 25px;
+            border-top: 1px solid #333;
+            background: #222;
+        }
+
+        .rule-content p { margin-top: 15px; margin-bottom: 5px; color: #aaa; font-style: italic;}
+        .rule-content ul { padding-left: 20px; margin-top: 15px; }
+        .rule-content li { margin-bottom: 12px; line-height: 1.6; }
+        .rule-content b { color: white; }
 
         .gallery img {
             width: 100%;
             border-radius: 10px;
             margin-top: 20px;
             border: 2px solid var(--primary);
+            transition: 0.3s;
         }
+        .gallery img:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        footer { padding: 40px; text-align: center; background: #050505; }
+        footer { padding: 40px; text-align: center; background: #050505; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
@@ -126,50 +157,79 @@
     </header>
 
     <div id="reglas" class="section">
-        <h2 style="text-align:center;">Reglamento Oficial</h2>
+        <h2 style="text-align:center; text-transform:uppercase;">Reglamento Oficial de la Ciudad</h2>
+        <p style="text-align:center; margin-bottom: 40px; color: #ccc;">El desconocimiento de las normas NO es excusa.</p>
         
-        <details class="rule-item">
-            <summary>1. Normas Generales</summary>
-            <div class="rule-content">
-                <ul>
-                    <li><b>Respeto:</b> Sin insultos ni toxicidad fuera de rol.</li>
-                    <li><b>Rol Serio:</b> Prohibido el Troll o Fail RP.</li>
-                    <li><b>MetaGaming:</b> No uses info de Discord/Streams dentro del juego.</li>
-                </ul>
-            </div>
-        </details>
+        <div class="rules-container">
+            <details class="rule-item">
+                <summary>1. Normas Generales y Convivencia</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Respeto:</b> Sin excepción. No insultos, discriminación, racismo o toxicidad. No peleas OOC.</li>
+                        <li><b>Rol Serio:</b> Mantén la compostura. No troll ni fail RP. Prohibido mezclar vida real con rol (MetaGaming).</li>
+                        <li><b>PowerGaming (PG):</b> No realices acciones irreales (ej: correr con 10 balazos). No forzar rol a otros.</li>
+                        <li><b>Uso de chat:</b> Usa correctamente los canales (IC/OOC). No spam ni flood. No publicidad.</li>
+                        <li><b>Hacks/Cheats:</b> Ban permanente inmediato.</li>
+                    </ul>
+                </div>
+            </details>
 
-        <details class="rule-item">
-            <summary>2. Conceptos de Combate y Vida</summary>
-            <div class="rule-content">
-                <ul>
-                    <li><b>Fear RP:</b> Valora la vida de tu personaje.</li>
-                    <li><b>RDM/VDM:</b> Prohibido matar sin motivo o usar vehículos como armas.</li>
-                    <li><b>Zonas Seguras:</b> Hospital, Comisaría y Bancos son zonas protegidas.</li>
-                </ul>
-            </div>
-        </details>
+            <details class="rule-item">
+                <summary>2. Conceptos de Combate y Uso de Violencia</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>DeathMatch (DM):</b> No matar sin razón válida de rol. Siempre debe haber historia o motivo.</li>
+                        <li><b>Fear RP:</b> Valora la vida de tu personaje ante el peligro real.</li>
+                        <li><b>Zonas Seguras:</b> Prohibido crimen en Hospital, Comisaría, Mecánicos, Garaje central, Cafe uwu, Bancos Fleeca.</li>
+                        <li><b>Uso de armas:</b> Solo con motivo de rol. No abusar en zonas seguras ni disparar sin razón.</li>
+                    </ul>
+                </div>
+            </details>
 
-        <details class="rule-item">
-            <summary>3. Rol Criminal</summary>
-            <div class="rule-content">
-                <ul>
-                    <li><b>Robos:</b> Requieren planeación y rol previo.</li>
-                    <li><b>Sanciones:</b> Incumplir normas puede llevar a Warn o Ban.</li>
-                </ul>
-            </div>
-        </details>
+            <details class="rule-item">
+                <summary>3. Conducción y Vehículos</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Conducción Realista:</b> Maneja de forma realista. No conducir como loco sin motivo ni usar vehículos como armas sin rol previo.</li>
+                        <li><b>Choques:</b> Rolea las consecuencias de un accidente.</li>
+                        <li><b>Combat Logging:</b> Prohibido desconectarse para evitar arrestos o interacciones.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="rule-item">
+                <summary>4. Rol Criminal y Policial</summary>
+                <div class="rule-content">
+                    <p><i>Importante: El objetivo NO es ganar, sino crear historias.</i></p>
+                    <ul>
+                        <li><b>Coherencia:</b> Tu personaje debe tener motivos reales para delinquir, no pasar de civil a criminal extremo sin desarrollo.</li>
+                        <li><b>Robos y delitos:</b> Deben tener rol previo (planeación). Respeta límites del servidor.</li>
+                        <li><b>Interacción con víctimas/policía:</b> Da oportunidad de rol (diálogo). No humillar innecesariamente. Acepta consecuencias si te atrapan.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="rule-item">
+                <summary>5. Staff y Sanciones</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li><b>Reportes:</b> Si tienes problemas, reporta con pruebas claras.</li>
+                        <li><b>Sanciones:</b> Incumplir normas puede llevar a Warn / Jail Administrativo / Ban (Temporal/Permanente). Las decisiones del Staff son finales.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
     </div>
 
     <div id="galeria" class="section">
-        <h2 style="text-align:center;">Galería</h2>
+        <h2 style="text-align:center; text-transform:uppercase;">Galería</h2>
         <div class="gallery">
-            <img src="https://i.ibb.co/9HZsjH74/Captura-de-pantalla-2026-03-29-234718.png" alt="Captura Gran Avenida">
+            <img src="https://i.ibb.co/HTv03yDv/Captura-de-pantalla-2026-03-14-193038.png" alt="Nueva Captura Gran Avenida">
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Gran Avenida RP | Todos los derechos reservados.</p>
+        <p>&copy; 2026 <b>Gran Avenida RP</b> | Todos los derechos reservados.</p>
     </footer>
 
 </body>
